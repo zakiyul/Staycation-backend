@@ -14,9 +14,9 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Category Page</h1>
+        <h1 class="h3 mb-4 text-gray-800">Booking Page</h1>
         <!-- DataTales Example -->
-        <%- include('table_category.ejs')%>
+        <%- include('table_booking.ejs')%>
       </div>
 
       <!-- /.container-fluid -->
@@ -70,16 +70,4 @@
     </div>
   </div>
 </div>
-<%- include('add_modal.ejs') %> <%- include('edit_modal.ejs')%> <%-
-include('../../partials/js.ejs')%>
-
-<script>
-  $("#dataTable").on("click", ".button-update", function () {
-    let id = $(this).data("id");
-    let name = $(this).data("name");
-    // console.log(id + name);
-    $("#edit-modal").modal("show");
-    $(".id").val(id);
-    $(".name").val(name);
-  });
-</script>
+<%- include('../../partials/js.ejs')%>
