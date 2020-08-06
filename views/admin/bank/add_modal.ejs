@@ -1,0 +1,84 @@
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="add-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Bank</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/admin/bank" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="nameBank">Bank Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nameBank"
+              name="nameBank"
+              placeholder="Enter bank name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="nomorRekening">Nomor Rekening</label>
+            <input
+              type="text"
+              name="nomorRekening"
+              id="omorRekening"
+              class="form-control"
+              placeholder="Enter nomor rekening"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter name"
+              required
+              name="name"
+              id="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input
+              type="file"
+              name="image"
+              id="image"
+              class="form-control border-0"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,7 @@
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
+        <%- include('../../partials/message.ejs')%>
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Bank Page</h1>
         <!-- DataTales Example -->
@@ -70,4 +71,19 @@
     </div>
   </div>
 </div>
-<%- include('../../partials/js.ejs')%>
+<%- include('add_modal.ejs')%> <%- include('edit_modal.ejs') %> <%-
+include('../../partials/js.ejs')%>
+
+<script>
+  $("#dataTable").on("click", ".button-update", function () {
+    let id = $(this).data("id");
+    let name = $(this).data("name");
+    let nameBank = $(this).data("namebank");
+    let nomorRekening = $(this).data("nomerrekening");
+    $("#edit-modal").modal("show");
+    $(".id").val(id);
+    $(".name").val(name);
+    $(".nameBank").val(nameBank);
+    $(".nomorRekening").val(nomorRekening);
+  });
+</script>
