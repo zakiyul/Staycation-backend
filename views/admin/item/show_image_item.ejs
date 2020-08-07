@@ -1,0 +1,23 @@
+<div
+  class="tab-pane fade show active"
+  id="show-image"
+  role="tabpanel"
+  aria-labelledby="home-tab"
+>
+  <div class="row">
+    <% for(let x= 0; x < item.imageId.length; x++){ %>
+    <div class="card ml-3 shadow mb-4 mt-2">
+      <div class="card-header py-3"></div>
+      <div class="card-body">
+        <img
+          src="http://localhost:3000/<%= item.imageId[x].imageUrl %>"
+          alt="item image"
+          width="350px"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <%}%>
+  </div>
+  <a href="http://localhost:3000/admin/item" class="btn btn-warning">Back</a>
+</div>

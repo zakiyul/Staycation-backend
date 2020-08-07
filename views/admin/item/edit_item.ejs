@@ -1,0 +1,74 @@
+<div class="card shadow mb-4 mt-2">
+  <div class="card-body">
+    <form
+      action="/admin/item/<%= item.id %>?_method=PUT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter title"
+          class="form-control"
+          value="<%= item.title%>"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          placeholder="Enter price"
+          class="form-control"
+          value="<%= item.price%>"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          name="city"
+          id="city"
+          class="form-control"
+          placeholder="Enter city"
+          value="<%= item.city%>"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select name="categoryId" id="category" class="form-control">
+          <option value="<%= item.categoryId._id%>"
+            ><%= item.categoryId.name%></option
+          >
+          <% for(let i = 0; i < category.length; i++){ %>
+          <option value="<%= category[i].id %>"><%= category[i].name %></option>
+          <%}%>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input
+          type="file"
+          class="form-control border-0"
+          multiple
+          name="image"
+          id="image"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="about" id="description" class="form-control">
+            <%= item.description%>
+        </textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </div>
+</div>
