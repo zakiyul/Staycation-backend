@@ -12,7 +12,7 @@
       <div class="col-md-5">
         <div class="card-body">
           <form
-            action="/admin/bank"
+            action="/admin/item/add/activity"
             method="POST"
             enctype="multipart/form-data"
           >
@@ -48,6 +48,7 @@
                 required
               />
             </div>
+            <input type="hidden" value="<%= itemId%>" name="itemId" />
             <button type="submit" class="btn btn-primary">Save</button>
           </form>
         </div>
@@ -70,6 +71,49 @@
                   <th>Action</th>
                 </tr>
               </thead>
+              <tbody>
+                <%for(let x =0; x < activity.length; x++) {%>
+                <tr>
+                  <td>
+                    <%=x+1%>
+                  </td>
+                  <td>
+                    <%= activity[x].name%>
+                  </td>
+                  <td>
+                    <%= activity[x].type%>
+                  </td>
+                  <td>
+                    <img
+                      src="http://localhost:3000/<%= activity[x].imageUrl%>"
+                      alt="imageUrl"
+                      width="70px"
+                    />
+                  </td>
+                  <td>
+                    <form
+                      action="/admin/item/<%= itemId%>/activity/<%=activity[x].id%>?_method=DELETE"
+                      method="POST"
+                    >
+                      <a href="javascript:void()" type="button"
+                        ><i
+                          class="fas fa-edit btn btn-warning btn-circle btn-sm button-update"
+                          data-id="<%=activity[x].id%>"
+                          data-name="<%= activity[x].name%>"
+                          data-type="<%= activity[x].type%>"
+                        ></i
+                      ></a>
+                      <button
+                        type="submit"
+                        class="btn btn-danger btn-circle btn-sm"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <%}%>
+              </tbody>
             </table>
           </div>
         </div>

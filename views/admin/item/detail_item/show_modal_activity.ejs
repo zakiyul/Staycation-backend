@@ -1,0 +1,75 @@
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="edit-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Acitvity</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/admin/item/update/activity?_method=PUT"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control name"
+              name="name"
+              placeholder="Enter name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="type">Type</label>
+            <input
+              type="text"
+              name="type"
+              id="type"
+              class="form-control type"
+              placeholder="Enter type"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" class="form-control" />
+            <small>Pilih gambar untuk update image</small>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" class="id" name="id" />
+            <input type="hidden" value="<%= itemId%>" name="itemId" />
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
