@@ -562,15 +562,57 @@ module.exports = {
 
   // BOOKING
   viewBooking: async (req, res) => {
-    const booking = await Booking.find()
-      .populate("memberId")
-      .populate("bankId");
-    console.log(booking);
-    res.render("admin/booking/view_booking", {
-      title: "Booking",
-      user: req.session.user,
-      booking,
-    });
+    try {
+      const booking = await Booking.find()
+        .populate("memberId")
+        .populate("bankId");
+      res.render("admin/booking/view_booking", {
+        title: "Booking",
+        user: req.session.user,
+        booking,
+      });
+    } catch (error) {
+      res.redirect("/admin/booking");
+      console.log(error);
+    }
+  },
+  showDetailBooking: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const booking = await Booking.findOne({ _id: id })
+        .populate("memberId")
+        .populate("bankId");
+      console.log(booking);
+      res.render("admin/booking/detail_booking", {
+        title: "Detail Booking",
+        user: req.session.user,
+        booking,
+      });
+    } catch (error) {
+      res.redirect("/admin/booking");
+    }
+  },
+  actionConfirm: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const booking = await Booking.findOne({ _id: id });
+      booking.payments.status = "Accept";
+      booking.save();
+      res.redirect(`/admin/booking/${id}`);
+    } catch (error) {
+      res.redirect(`/admin/booking/${id}`);
+    }
+  },
+  actionReject: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const booking = await Booking.findOne({ _id: id });
+      booking.payments.status = "Reject";
+      booking.save();
+      res.redirect(`/admin/booking/${id}`);
+    } catch (error) {
+      res.redirect(`/admin/booking/${id}`);
+    }
   },
   // AKHIR BOOKING
 };
