@@ -60,9 +60,15 @@ module.exports = {
   },
   // DASHBOARD
   viewDashboard: async (req, res) => {
+    const member = await Member.find();
+    const booking = await Booking.find();
+    const item = await Item.find();
     res.render("admin/dashboard/view_dashboard", {
       title: "Dashboard",
       user: req.session.user,
+      member,
+      booking,
+      item,
     });
   },
   // AKHIR DASHBOARD
