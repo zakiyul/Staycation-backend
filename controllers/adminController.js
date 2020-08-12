@@ -60,6 +60,7 @@ module.exports = {
   viewDashboard: async (req, res) => {
     res.render("admin/dashboard/view_dashboard", {
       title: "Dashboard",
+      user: req.session.user,
     });
   },
   // AKHIR DASHBOARD
@@ -75,6 +76,7 @@ module.exports = {
         category,
         alert,
         title: "Category",
+        user: req.session.user,
       });
     } catch (error) {
       res.redirect("/admin/category");
@@ -131,7 +133,12 @@ module.exports = {
       const alertMessage = req.flash("alertMessage");
       const alertStatus = req.flash("alertStatus");
       const alert = { message: alertMessage, status: alertStatus };
-      res.render("admin/bank/view_bank", { title: "Bank", alert, bank });
+      res.render("admin/bank/view_bank", {
+        title: "Bank",
+        alert,
+        bank,
+        user: req.session.user,
+      });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
       req.flash("alertStatus", "danger");
@@ -219,6 +226,7 @@ module.exports = {
         alert,
         item,
         action: "view",
+        user: req.session.user,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -273,6 +281,7 @@ module.exports = {
         alert,
         item,
         action: "show image",
+        user: req.session.user,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -297,6 +306,7 @@ module.exports = {
         item,
         category,
         action: "edit",
+        user: req.session.user,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -385,6 +395,7 @@ module.exports = {
         itemId,
         activity,
         feature,
+        user: req.session.user,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -549,7 +560,10 @@ module.exports = {
 
   // BOOKING
   viewBooking: (req, res) => {
-    res.render("admin/booking/view_booking", { title: "Booking" });
+    res.render("admin/booking/view_booking", {
+      title: "Booking",
+      user: req.session.user,
+    });
   },
   // AKHIR BOOKING
 };
