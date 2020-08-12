@@ -52,10 +52,15 @@ module.exports = {
       res.redirect("/admin/signin");
     }
   },
-
+  actionLogout: (req, res) => {
+    req.session.destroy();
+    res.redirect("/admin/signin");
+  },
   // DASHBOARD
-  viewDashboard: (req, res) => {
-    res.render("admin/dashboard/view_dashboard", { title: "Dashboard" });
+  viewDashboard: async (req, res) => {
+    res.render("admin/dashboard/view_dashboard", {
+      title: "Dashboard",
+    });
   },
   // AKHIR DASHBOARD
 
