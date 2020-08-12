@@ -6,7 +6,7 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  bookingEndSchema: {
+  bookingEndDate: {
     type: Date,
     required: true,
   },
@@ -18,6 +18,10 @@ const bookingSchema = new mongoose.Schema({
     _id: {
       type: ObjectId,
       ref: "Item",
+    },
+    title: {
+      type: String,
+      required: true,
     },
     price: {
       type: Number,
@@ -40,12 +44,12 @@ const bookingSchema = new mongoose.Schema({
     type: ObjectId,
     ref: "Bank",
   },
-  payment: {
+  payments: {
     proofPayment: {
       type: String,
       required: true,
     },
-    bankForm: {
+    bankFrom: {
       type: String,
       required: true,
     },

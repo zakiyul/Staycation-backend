@@ -1037,7 +1037,7 @@ var data = [
           proofPayment: "images/bukti.jpeg",
           bankFrom: "BCA",
           status: "Proses",
-          accountHolder: "ang",
+          accountHolder: "angga",
         },
       },
     ],

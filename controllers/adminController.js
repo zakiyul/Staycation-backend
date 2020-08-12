@@ -5,6 +5,8 @@ const Feature = require("../models/Feature");
 const Activity = require("../models/Activity");
 const Users = require("../models/Users");
 const Image = require("../models/Image");
+const Booking = require("../models/Booking");
+const Member = require("../models/Member");
 const fs = require("fs-extra");
 const path = require("path");
 const bcrypt = require("bcryptjs");
@@ -559,10 +561,15 @@ module.exports = {
   // AKHIR ITEM
 
   // BOOKING
-  viewBooking: (req, res) => {
+  viewBooking: async (req, res) => {
+    const booking = await Booking.find()
+      .populate("memberId")
+      .populate("bankId");
+    console.log(booking);
     res.render("admin/booking/view_booking", {
       title: "Booking",
       user: req.session.user,
+      booking,
     });
   },
   // AKHIR BOOKING
