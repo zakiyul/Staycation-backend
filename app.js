@@ -9,12 +9,15 @@ const flash = require("connect-flash");
 
 //connect mongoose
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/db_staycation", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: true,
-});
+mongoose.connect(
+  "mongodb+srv://zakiul:zakiulpasswordrahasia123@cluster0.bobfm.mongodb.net/db_staycation?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+  }
+);
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
